@@ -1,4 +1,4 @@
-# Notionize
+# notion-blockify
 
 ## Installation
 ```
