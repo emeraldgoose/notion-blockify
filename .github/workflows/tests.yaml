@@ -14,9 +14,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: "3.9"
-      - name: Test Notionizer
+      - name: Test Blockizer
         run: |
-          python -m unittest tests/test_notionizer.py
+          python -m unittest tests/test_blockizer.py
       - name: Test Complex Case
         run: |
           python -m unittest tests/test_complex_case.py
