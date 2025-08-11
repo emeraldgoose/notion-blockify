@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "notion-blockify"
+version = "0.1.0"
+description = "Convert Markdown to Notion blocks"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Minseong Kim", email = "emeraldgoose@gmail.com"},
+]
+keywords = ["notion", "markdown", "converter", "blocks"]
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["notion_blockify*"]
+exclude = ["tests*"]

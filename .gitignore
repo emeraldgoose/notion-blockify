@@ -1,0 +1,5 @@
+src/__pycache__
+src/tests/__pycache__
+/notion_blockify.egg-info
+tests/test.ipynb
+tests/test.md
