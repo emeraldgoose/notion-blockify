@@ -1,5 +1,7 @@
-src/__pycache__
-src/tests/__pycache__
+/.venv
+notion_blockify/__pycache__
+tests/__pycache__
 /notion_blockify.egg-info
+/dist
 tests/test.ipynb
 tests/test.md
