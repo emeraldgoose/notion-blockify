@@ -103,6 +103,27 @@ $$ E = mc^2 $$
 [ ] not checked
 ```
 
+### Text Style
+**bold**
+```
+**bold**
+__bold__
+```
+**italic**
+```
+*italic*
+_italic_
+```
+~~strikethrough~~
+```
+~~strikethrough~~
+```
+`code`
+```
+`code`
+```
+
+
 ## Examples
 If you are using the [notion-client](https://github.com/ramnes/notion-sdk-py) library, you can create a page.
 
