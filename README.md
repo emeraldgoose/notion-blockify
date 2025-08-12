@@ -109,7 +109,7 @@ If you are using the [notion-client](https://github.com/ramnes/notion-sdk-py) li
 > Note: The Notion API does not allow more than 100 blocks in a single request. Exceeding this limit will result in an error.   
 > If you need to add more than 100 blocks, split them into multiple requests and append them sequentially to the same parent block or page.
 
-### Create Page
+### Create a page in a Notion page
 ```python
 import os
 from notion_blockify import Blockizer
@@ -130,7 +130,7 @@ my_page = notion.pages.create(
 )
 ```
 
-### Create Page to Database
+### Create a page in a Notion database
 ```python
 import os
 from notion_blockify import Blockizer
