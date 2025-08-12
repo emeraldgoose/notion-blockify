@@ -15,9 +15,7 @@ markdown = """
 This is paragraph.
 """
 
-blockizer = Blockizer()
-
-blocks = blockizer.convert(markdown)
+blocks = Blockizer().convert(markdown)
 ```
 
 ## Supported Blocks
@@ -120,8 +118,7 @@ from notion_client import Client
 with open('example.md', 'r') as f:
     text = f.read()
 
-blockizer = Blockizer()
-blocks = Blockizer.convert(text)
+blocks = Blockizer().convert(text)
 
 notion = Client(auth=os.environ["NOTION_API_KEY"])
 my_page = notion.pages.create(
@@ -142,8 +139,7 @@ from notion_client import Client
 with open('example.md', 'r') as f:
     text = f.read()
 
-blockizer = Blockizer()
-blocks = Blockizer.convert(text)
+blocks = Blockizer().convert(text)
 
 notion = Client(auth=os.environ["NOTION_API_KEY"])
 my_page = notion.pages.create(
