@@ -15,6 +15,9 @@ authors = [
 keywords = ["notion", "markdown", "converter", "blocks"]
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/emeraldgoose/notion-blockify"
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["notion_blockify*"]
