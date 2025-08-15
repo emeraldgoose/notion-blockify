@@ -83,8 +83,15 @@ blocks = Blockizer().convert(markdown)
 ![Alt](Image url)
 ```
 
-Only `<figure>` tags containing both an `<img>` and a `<figcaption>` are supported. The caption will be added below the image in italic text.
+If an `<img>` tag is used on its own or wrapped inside a `<figure>` tag, it will be converted into an image block. If a `<figcaption>` tag is present inside the `<figure>`, its content will be added below the image in _italic_.
+
 ```
+<img src="image url">
+
+<figure>
+    <img src="image url">
+</figure>
+
 <figure>
     <img src="image url">
     <figcaption>caption text</figcaption>
