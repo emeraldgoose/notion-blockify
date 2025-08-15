@@ -134,9 +134,6 @@ _italic_
 ## Examples
 If you are using the [notion-client](https://github.com/ramnes/notion-sdk-py) library, you can create a page.
 
-> Note: The Notion API does not allow more than 100 blocks in a single request. Exceeding this limit will result in an error.   
-> If you need to add more than 100 blocks, split them into multiple requests and append them sequentially to the same parent block or page.
-
 ### Create a page in a Notion page
 ```python
 import os
@@ -185,4 +182,44 @@ my_page = notion.pages.create(
         "children": blocks
     }
 )
+```
+
+### > 100 blocks
+If you need to add more than 100 blocks, split them into multiple requests and append them sequentially to the same parent block or page.
+> Note: The Notion API does not allow more than 100 blocks in a single request. Exceeding this limit will result in an error.   
+
+```python
+import os
+from notion_client import Client
+
+with open('example.md', 'r') as f:
+    text = f.read()
+
+blocks = Blockizer().convert(text)
+
+# Split the blocks into chunks of size 100.
+chunks = [blocks[i:(i+1)*100] for i in range(0,len(blocks),100)]
+
+# Or use batched (python >= 3.12)
+from itertools import batched
+chunks = list(batched(blocks, n=100))
+
+notion = Client(auth=os.environ["NOTION_API_KEY"])
+for i, chunk in enumerate(chunks):
+    if i == 0:
+        my_page = notion.pages.create(
+            **{
+                "parent": {"page_id": NOTION_PAGE_ID},
+                "properties": {"title": [{"text": {"content": PAGE_TITLE}}]},
+                "children": chunk
+            }
+        )
+        new_page_id = my_page['id']
+    else:
+        update_my_page = notion.pages.update(
+            **{
+                "page_id": new_page_id,
+                "children": chunk
+            }
+        )
 ```
