@@ -3,7 +3,7 @@ import re
 CODE_BLOCK_PATTERN = re.compile(r"```(\w+)?\n([\s\S]*?)\n```", re.DOTALL)
 LATEX_BLOCK_PATTERN = re.compile(r"\$\$(.*?)\$\$", re.DOTALL)
 IMAGE_XML_BLOCK_PATTERN = image_xml_pattern = re.compile(
-    r"<figure>\n([\s\S]*?)\n</figure>", re.DOTALL
+    r"(<figure>([\s\S]*?)</figure>|<img\s+src=\"[^\"]*\"\s*>)", re.DOTALL
 )
 
 
@@ -26,10 +26,10 @@ def replace_latex_blocks(match):
 def replace_image_xml_blocks(match):
     index = len(image_xml_blocks)
     content = match.group(1)
-    src = re.findall(r'<img src="([\s\S]*?)">', content)
+    src = re.findall(r'<img\s+src="([\s\S]*?)"\s*>', content)
     figcaption = re.findall(r"<figcaption>([\s\S]*?)</figcaption>", content)
-    src = "" if src is None else src[0]
-    figcaption = "" if figcaption is None else figcaption[0]
+    src = "" if not src else src[0]
+    figcaption = "" if not figcaption else figcaption[0]
     image_xml_blocks[index] = (src, figcaption)
     return f"IMAGEXMLBLOCK_{index}"
 
