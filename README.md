@@ -190,6 +190,7 @@ If you need to add more than 100 blocks, split them into multiple requests and a
 
 ```python
 import os
+from notion_blockify import Blockizer
 from notion_client import Client
 
 with open('example.md', 'r') as f:
