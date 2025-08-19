@@ -203,7 +203,7 @@ chunks = [blocks[i:(i+1)*100] for i in range(0,len(blocks),100)]
 
 # Or use batched (python >= 3.12)
 from itertools import batched
-chunks = list(batched(blocks, n=100))
+chunks = batched(blocks, n=100)
 
 notion = Client(auth=os.environ["NOTION_API_KEY"])
 for i, chunk in enumerate(chunks):
