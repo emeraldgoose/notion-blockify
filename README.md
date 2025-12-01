@@ -217,9 +217,9 @@ for i, chunk in enumerate(chunks):
         )
         new_page_id = my_page['id']
     else:
-        update_my_page = notion.pages.update(
+        update_my_page = notion.blocks.children.append(
+            block_id=new_page_id,
             **{
-                "page_id": new_page_id,
                 "children": chunk
             }
         )
